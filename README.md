@@ -14,11 +14,11 @@ This is the most basic Ansible template I did after I figured it out how to even
 
 ## Setup
 
-- Install ansible on your machine. `brew install ansible`, `apt install ansible`, etc. It will install ansible and ansible
+- Install ansible on your machine. `brew install ansible`, `apt install ansible`, etc. It will install `ansible` and `ansible-playbook` commands.
 - SSH Key
   - Option 1 (recommended): Setup ssh key on the server so you could connect securely without inputing password.
   - Option 2: Use username and password. Add password in the inventory: `ansible_password = *******` just under `ansible_username` line.
-- Adjust ever so slightly the inventory and maybe the playbook
+- Adjust ever so slightly the inventory and maybe the playbook.
 - ???
 - Profit!
 
@@ -50,11 +50,11 @@ Your milage may vary.
 ### Ad-hoc command examples
 
 - Run sudo apt update on inventory all with module apt with sudo: `ansible all -m apt -a update_cache=true --become --ask-become-pass`
-- Install whatever package you want using apt with sudo on inventory pi with `sudo ansible pi -m apt -a name=[some package] --become --ask-become-pass`
+- Install whatever package you want using apt with sudo on inventory pi with `sudo ansible pi -m apt -a name=[some package] --become --ask-become-pass`.
 
 ### Playbook
 
-- Does whatever is defined in the file: `ansible-playbook playbooks/misc.yml`
+- Does whatever is defined in the file: `ansible-playbook playbooks/misc.yml`.
 - Use `--become --ask-become-pass` if have password or ssh key with password.
 
 ### SSH Agent (Optional)

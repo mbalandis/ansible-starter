@@ -30,7 +30,7 @@ This is the most basic Ansible template I did after I figured it out how to even
 # - -f name of file. I think it is best to separate from default name.
 # - -C comment, write whatever you want (name, email, etc)
 # - -t is type of encryption. You can pick whatever ed255519 is most secure (i think)
-ssh-keygen -t ed25519 -o -a 100 -f anisble -C "ansible"
+ssh-keygen -t ed25519 -o -a 100 -f ansible -C "ansible"
 # - change [host] to server host or ip where you want to send the key. (Or copy manually to ~/.ssh/authorized_keys
 ssh-copy-id -i ansible -s [host]
 ```

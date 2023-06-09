@@ -1,5 +1,7 @@
 {
 	"recommendations": [
-		"redhat.ansible"
+		"redhat.ansible",
+		"davidanson.vscode-markdownlint",
+		"lkrms.inifmt"
 	]
 }

@@ -25,11 +25,14 @@ This is the most basic Ansible template I did after I figured it out how to even
 ### (Option 1) SSH Key
 
 ```sh
-ssh-keygen -t ed25519 -o -a 100 -C "ansible"
-ssh-copy-id -i ansible -s [host]
 # - -s means it is secured already with a other.
 # - use -n to do a dry run.
-# - change [host] to server host or ip where you want to send the key.
+# - -f name of file. I think it is best to separate from default name.
+# - -C comment, write whatever you want (name, email, etc)
+# - -t is type of encryption. You can pick whatever ed255519 is most secure (i think)
+ssh-keygen -t ed25519 -o -a 100 -f anisble -C "ansible"
+# - change [host] to server host or ip where you want to send the key. (Or copy manually to ~/.ssh/authorized_keys
+ssh-copy-id -i ansible -s [host]
 ```
 
 ### (Option 2) Password
@@ -37,7 +40,9 @@ ssh-copy-id -i ansible -s [host]
 - You many need to install sshpass. The way I got it working on mac is:
 
  ```sh
- curl -L https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb > sshpass.rb && brew install sshpass.rb && rm sshpass.rb\n
+ curl -L https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb > sshpass.rb
+ brew install sshpass.rb
+ rm sshpass.rb
  ```
 
 Your milage may vary.
@@ -45,7 +50,7 @@ Your milage may vary.
 ### Ad-hoc command examples
 
 - Run sudo apt update on inventory all with module apt with sudo: `ansible all -m apt -a update_cache=true --become --ask-become-pass`
-- Install whatever package you want using apt with sudo on inventory pi with sudo ansible pi -m apt -a name=[some package] --become --ask-become-pass
+- Install whatever package you want using apt with sudo on inventory pi with `sudo ansible pi -m apt -a name=[some package] --become --ask-become-pass`
 
 ### Playbook
 

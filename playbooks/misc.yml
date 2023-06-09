@@ -1,0 +1,10 @@
+---
+- name: Install Misc Packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Install useful misc packages
+      ansible.builtin.apt:
+        name:
+          - neofetch
+        state: present
